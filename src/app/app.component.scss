@@ -1,0 +1,14 @@
+.container {
+  max-width: 1110px;
+  height: 100vh;
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: center;
+  //   justify-content: center;
+}
+
+.text {
+  font-size: 1.6rem;
+}
