@@ -1,47 +1,42 @@
+<div class="todo__add-container">
+    <input type="text" class="todo__input" placeholder="Task Name" [(ngModel)]="title">
+
+    <select name="difficulty" id="difficulty" class="todo__difficulty-dropdown" [(ngModel)]="selectedOption">
+        <option selected [ngValue]="''" hidden>Select</option>
+        <option value="easy">Easy</option>
+        <option value="medium">Medium</option>
+        <option value="hard">Hard</option>
+    </select>
+
+    <button class="btn__primary" (click)="onAddClick()">Add</button>
+</div>
+
 <div class="todo">
     <div class="todo__type todo__type--to-do">
-        <h1 class="todo__title ">TODO</h1>
+        <h2 class="todo__title ">To-do</h2>
         <div class="todo__items-container">
-            <div class="todo__item">
-                <p class="todo__task">dasdas</p>
-                <div class="todo__icons-container">
-                    <i class="fa-solid fa-angle-left todo__icon"></i>
-                    <i class="fa-solid fa-angle-right todo__icon"></i>
-                    <i class="fa-solid fa-x todo__icon"></i>
-                </div>
-            </div>
+            <!-- <h3 *ngIf="justTodo().length===0">List is empty</h3> -->
+            <app-todo-item *ngFor="let todo of justTodo(); let i = index" [todoIndex]="i" [todoItem]="todo"
+                (sendItemToDelete)="deleteTodo($event)"></app-todo-item>
         </div>
     </div>
 
     <div class="todo__type todo__type--in-progress">
-        <h1 class="todo__title ">In Progress</h1>
+        <h2 class="todo__title ">In Progress</h2>
         <div class="todo__items-container">
-            <div class="todo__item">
-                <div class="b">
-                    <p class="todo__task">dasdasdasdasdasdasdasdadasddsadasdasdasdas</p>
-                </div>
-                <div class="todo__icons-container">
-                    <i class="fa-solid fa-angle-left todo__icon todo__icon--arrow-left"></i>
-                    <i class="fa-solid fa-angle-right todo__icon todo__icon--arrow-right"></i>
-                    <i class="fa-solid fa-x todo__icon todo__icon--x"></i>
-                </div>
-            </div>
+            <!-- <h3 *ngIf="todosInProgress().length===0">List is empty</h3> -->
+            <app-todo-item *ngFor="let todo of todosInProgress() ; let i = index" [todoIndex]="i" [todoItem]="todo"
+                [todoItem]="todo"></app-todo-item>
         </div>
     </div>
 
     <div class="todo__type todo__type--done">
-        <h1 class="todo__title ">Done</h1>
+        <h2 class="todo__title ">Done</h2>
         <div class="todo__items-container">
-            <div class="todo__item">
-                <p class="todo__task">dasdas</p>
-                <div class="todo__icons-container">
-                    <i class="fa-solid fa-angle-left todo__icon"></i>
-                    <i class="fa-solid fa-angle-right todo__icon"></i>
-                    <i class="fa-solid fa-x todo__icon"></i>
-                </div>
-            </div>
+            <!-- <h3 *ngIf="todosCompleted().length===0">List is empty</h3> -->
+            <app-todo-item *ngFor="let todo of todosCompleted() ; let i = index" [todoIndex]="i" [todoItem]="todo"
+                [todoItem]="todo"></app-todo-item>
         </div>
     </div>
 
 </div>
-<!-- <i class="fa-solid fa-check"></i> -->
